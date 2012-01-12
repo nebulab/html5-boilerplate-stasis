@@ -1,7 +1,7 @@
 <!doctype html>
-/[if lt IE 7] <html class="no-js ie6 oldie" lang="en">
-/[if IE 7] <html class="no-js ie7 oldie" lang="en">
-/[if IE 8] <html class="no-js ie8 oldie" lang="en">
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8" lang="en">
+/[if IE 8] <html class="no-js lt-ie9" lang="en">
 / [if gt IE 8]><!
 %html.no-js{:lang => "en"}
   / <![endif]
@@ -12,21 +12,24 @@
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}
-    %link{:href => "/css/text.css", :rel => "stylesheet"}
-    %link{:href => "/css/reset.css", :rel => "stylesheet"}
-    %link{:href => "/css/960.css", :rel => "stylesheet"}
-    %link{:href => "/css/basestyle.css", :rel => "stylesheet"}
-    %link{:href => "/css/fonts.css", :rel => "stylesheet"}
     %link{:href => "/css/style.css", :rel => "stylesheet"}
     %script{:src => "/js/libs/modernizr-2.0.6.min.js"}
   %body{:id=>@a}
-    
-    %p Copyright
-    
-    / ! end of #container
-    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"}
 
-    
+    %header 
+      
+    %div{:role => "main"}
+
+    %footer
+
+    / ! end of #container
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
+    :javascript
+      window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
+
+    %script{:defer => true, :src => "/js/plugins.js" }
+    %script{:defer => true, :src => "/js/script.js" }
+
     :javascript
       window.jQuery || document.write('<\/script>')
        // Change UA-XXXXX-X to be your site's ID
@@ -34,3 +37,11 @@
         Modernizr.load({
           load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
         });
+        
+    / ! Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+    / !     chromium.org/developers/how-tos/chrome-frame-getting-started 
+    /[if lt IE 7] 
+      %script{:src => "//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"}
+      :javascript
+        window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+
