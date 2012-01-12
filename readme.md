@@ -9,6 +9,6 @@ coffeescript.
 
 ## Quick start
 
-Clone the git repo - `git clone git://github.com/nebulab/html5-boilerplate-stasis.git`
-Install the required gems - `bundle install`
-Run stasis to generate content in /public directory - `stasis`
+* Clone the git repo - `git clone git://github.com/nebulab/html5-boilerplate-stasis.git`
+* Install the required gems - `bundle install`
+* Run stasis to generate content in /public directory - `stasis`
