@@ -2,6 +2,7 @@
 public/*
 img/cache/*
 css/.sass-cache/*
+.sass-cache/*
 
 # Numerous always-ignore extensions
 *.diff
