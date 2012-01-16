@@ -1,29 +1,30 @@
 <!doctype html>
-/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
-/[if IE 7] <html class="no-js lt-ie9 lt-ie8" lang="en">
-/[if IE 8] <html class="no-js lt-ie9" lang="en">
-/ [if gt IE 8]><!
-%html.no-js{:lang => "en"}
-  / <![endif]
+/[if lt IE 7]
+  %html.no-js.lt-ie9.lt-ie8.lt-ie7{:lang => @lang}
+/[if IE 7]
+  %html.no-js.lt-ie9.lt-ie8{:lang => @lang}
+/[if IE 8] 
+  %html.no-js.lt-ie9{:lang => @lang}
+<!--[if gt IE 8]><!-->
+%html.no-js{:lang => @lang} 
+  <!--<![endif]-->
   %head
     %meta{:charset => "utf-8"}
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
-    %title 
-    %meta{:content => "", :name => "description"}
-    %meta{:content => "", :name => "author"}
+    %title= @title
+    %meta{:content => @description, :name => "description"}
+    %meta{:content => @author, :name => "author"}
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}
     %link{:href => "/css/style.css", :rel => "stylesheet"}
     %script{:src => "/js/libs/modernizr-2.0.6.min.js"}
-  %body{:id=>@a}
-
-    %header 
-      
-    %div{:role => "main"}
-      = yield
-
-    %footer
-
-    / ! end of #container
+  %body
+    #container
+      %header 
+      %div{:role => "main"}
+        = yield
+      %footer
+    -# end of #container
+    
     %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
     :javascript
       window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
@@ -39,8 +40,9 @@
           load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
         });
         
-    / ! Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-    / !     chromium.org/developers/how-tos/chrome-frame-getting-started 
+    -# 
+      Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+      chromium.org/developers/how-tos/chrome-frame-getting-started 
     /[if lt IE 7] 
       %script{:src => "//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"}
       :javascript
